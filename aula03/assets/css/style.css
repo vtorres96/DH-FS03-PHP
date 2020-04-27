@@ -33,6 +33,14 @@ main {
 main a {
     font-weight: bold;
 }
+main .desafio {
+    padding: 5px;
+    background-color:#f5f5f5;
+    border-radius:10px;
+    color:blue;
+    line-height:20px;
+    font-size:16px;
+}
 footer {
     background-color: #343a40;
     border-top: 2px solid rgba(0, 119, 255, 0.85);
@@ -44,3 +52,4 @@ footer p {
     text-align: center;
     margin: auto;
 }
+
