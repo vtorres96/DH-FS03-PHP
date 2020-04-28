@@ -1,5 +1,5 @@
 <?php
-    $tituloDaPagina = "Métodos | PHP - Aula 02";
+    $tituloDaPagina = "Métodos | PHP - Aula 03";
     require_once("./inc/head.php");
 ?>
 <body>

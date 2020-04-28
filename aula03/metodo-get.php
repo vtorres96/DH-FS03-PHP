@@ -1,12 +1,12 @@
 <?php
-    $tituloDaPagina = "Método GET | PHP - Aula 02";
+    $tituloDaPagina = "Método GET | PHP - Aula 03";
     require_once("./inc/head.php");
 ?>
 <body>
     <?php require_once("./inc/header.php"); ?>
     <main class="container my-5">
 
-        <form action="11-metodos.php" method="GET" class="col-6 mx-auto border rounded bg-light p-4">
+        <form action="metodos.php" method="GET" class="col-6 mx-auto border rounded bg-light p-4">
             <div class="form-row">
                 <h3 class="text-center pt-2 pb-0">Formulário de Cadastro GET</h3>
                 <p class="pt-0 pb-4">Preencha o formulário e entenda o método GET</p>

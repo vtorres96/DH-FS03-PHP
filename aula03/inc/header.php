@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="11-metodos.php">Início <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="metodos.php">Início <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="11-metodo-get.php">Método GET</a>
+                    <a class="nav-link" href="metodo-get.php">Método GET</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="11-metodo-post.php">Método POST</a>
+                    <a class="nav-link" href="metodo-post.php">Método POST</a>
                 </li>
             </ul>
         </div>

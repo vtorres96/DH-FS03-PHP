@@ -43,7 +43,7 @@ main .desafio {
 }
 footer {
     background-color: #343a40;
-    border-top: 2px solid rgba(0, 119, 255, 0.85);
+    border-top: 2px solid rgba(0, 255, 13, 0.85);
     color: white;
     min-height: 64px;
     padding: 20px;
