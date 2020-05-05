@@ -1,3 +1,10 @@
+<?php
+    // 1 - obtendo o conteudo do arquivo usuarios.json
+    $usuariosJson = file_get_contents("./data/usuarios.json");
+
+    // 2 - transformando o conteudo do arquivo usuarios.json em um array associativo
+    $arrayUsuarios = json_decode($usuariosJson, true);
+?>
 <?php $tituloPagina = "Lista de Usuários"; ?>
 <?php require_once("./inc/head.php"); ?>
 <?php require_once("./inc/header.php"); ?>
@@ -9,16 +16,19 @@
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Senha</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Nome Usuário</th>
-                            <td>E-mail usuário</td>
-                            <td>Senha usuário</td>
-                        </tr>
+                        <!-- 3 - percorrendo o array associativo da lista de usuarios -->
+                        <?php foreach ($arrayUsuarios["usuarios"] as $usuario): ?>
+                            <tr>
+                                <th scope="row"><?= $usuario["nome"] ?></th>
+                                <td><?= $usuario["sobrenome"] ?></td>
+                                <td><?= $usuario["email"] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </section>

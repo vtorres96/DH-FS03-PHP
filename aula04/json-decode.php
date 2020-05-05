@@ -12,7 +12,7 @@
     // exibindo conteudo da propriedade A do objeto
     echo "Valor da propriedade A do objeto: " . $objetoStringJson->a;
 
-    // transforma a string json em um array, para isso basta informar o segundo parametro como true
+    // transforma a string json em um array associativo, para isso basta informar o segundo parametro como true
     $arrayStringJson = json_decode($stringJson, true);
 
     // visualizando o array retornado

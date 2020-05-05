@@ -1,3 +1,37 @@
+<?php
+
+    if(isset($_POST) && $_POST){
+        // 1 - receber as informacoes que o usuario preencheu no formulario 
+        $nome = $_POST["nome"];
+        $sobrenome = $_POST["sobrenome"];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+
+        // 2 - criar um array para o novo usuario e dentro dele ter as propriedades nome, sobrenome, email e senha com os valores do que o usuario preencheu no formulario
+        $novoUsuario = [
+            "nome" => $nome,
+            "sobrenome" => $sobrenome,
+            "email" => $email,
+            "senha" => $senha
+        ];
+
+        // 3 - obtendo o conteudo do arquivo usuarios.json
+        $usuariosJson = file_get_contents("./data/usuarios.json");
+
+        // 4 - transformando o conteudo do arquivo usuarios.json em um array associativo
+        $arrayUsuarios = json_decode($usuariosJson, true);
+
+        // 5 - adicionando o novo usuario no array da lista de usuarios obtidos do arquivo usuarios.json
+        array_push($arrayUsuarios["usuarios"], $novoUsuario);
+
+        // 6 - transformando o array associativo de usuarios apos ter recebido o novo usuario em uma string json
+        $jsonUsuarios = json_encode($arrayUsuarios);
+
+        // 7 - sobrescrevendo o conteudo do arquivo usuarios.json
+        $cadastrou = file_put_contents("./data/usuarios.json", $jsonUsuarios);
+    }
+
+?>
 <?php $tituloPagina = "Formulário de Cadastro"; ?>
 <?php require_once("./inc/head.php"); ?>
 <?php require_once("./inc/header.php"); ?>
@@ -18,7 +52,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="email">email</label>
+                            <label for="email">E-mail</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="form-group col-md-6">
@@ -26,20 +60,12 @@
                             <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Concordo com os termos
-                            </label>
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
-                    <div class="form-group col-md-12">
+                    <div class="form-group">
                         <?php
                             if(isset($_POST) && $_POST){
                                 if($cadastrou){
-                                    echo '<div class=" col-md-6 mt-2 alert alert-success">Usuário cadastrado com sucesso</div>';
+                                    echo '<div class="col-md-6 mt-2 alert alert-success">Usuário cadastrado com sucesso</div>';
                                 } else {
                                     echo '<div class="col-md-6 mt-2 alert alert-danger">Falha ao processar requisição</div>';
                                 }
