@@ -1,0 +1,1 @@
+Sou um texto criado a partir do arquivo file-put-contents.php

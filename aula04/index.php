@@ -18,20 +18,20 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label for="email">email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="email">email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="form-group col-md-6">
-                        <label for="senha">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" required>
+                            <label for="senha">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Concordo com os termos
-                        </label>
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Concordo com os termos
+                            </label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
@@ -41,7 +41,7 @@
                                 if($cadastrou){
                                     echo '<div class=" col-md-6 mt-2 alert alert-success">Usuário cadastrado com sucesso</div>';
                                 } else {
-                                    echo '<div class="col-md-6 mt-2 alert alert-danger">Falha ao processar requisiçãos</div>';
+                                    echo '<div class="col-md-6 mt-2 alert alert-danger">Falha ao processar requisição</div>';
                                 }
                             }
                         ?>
