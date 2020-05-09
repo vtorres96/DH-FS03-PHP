@@ -23,6 +23,23 @@ No caso do backend, funciona um pouco diferente, afinal, o tempo já está apert
 
 As Sprints tem data limite para entrega. Ou seja, sempre que chegar a data limite os grupos deverão enviar o entregável para os professores analisarem e avaliarem, e como docentes, terão que dar um feedback para cada grupo.
 
+Fases do Projeto Integrador*
+
+- Front | Interface do Usuário
+- Front | Interface do Administrador
+- Front | Ajustes e adições
+- Banco de Dados | Definição de Tabelas e Relacionamentos
+- Back | Implantação do Laravel
+
+*Resultado Final Esperado*
+
+Um projeto onde seja possível:
+
+- Se cadastrar, logar, deslogar e navegar pelo site;
+- Acessar por desktop ou mobile;
+- Acessar como administrador;
+- Realizar as ações do CRUD - Criar, Ler, Atualizar e Deletar registros (produtos, usuários)
+
 Texto
 
 Resumindo vocês terão que desenvolver um projeto do 0, onde terão que ir desde o frontend até o backend. Iremos implementar metodologias ágeis, visando vocês quebrarem um problema macro (que é o projeto integrador como um todo) em micro problemas, e, com base nisso serão feitas entregas.
