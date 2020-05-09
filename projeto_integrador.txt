@@ -1,0 +1,36 @@
+Tópicos
+
+Projeto Integrador 
+
+- Os alunos deverão se separar em grupos de até 4 pessoas.
+
+- Os grupos terão a possibilidade de criar projetos relacionados a quase todo tipo de assunto (deverão conversar com os professores antes para colocar em pauta o projeto que estão em mente), mas,
+oferecemos como pontapé inicial três projetos (quizz, rede social, e-commerce).
+
+- O projeto integrador pode ser comparado a um TCC de graduação, porém, simplificado. Onde durante estes meses de imersão ao longo do curso de desenvolvimento web full stack, os grupos terão que cumprir etapas (sprints), que irão incrementar o projeto. Para que no final do curso tenham um projeto bacana para apresentar a banca (professores: Victor e Marcelo, no caso, desta turma e coordenadora: Ana Paula)
+
+- As sprints seguem esta ordem: Frontend, Banco de Dados, Backend. 
+A primeira sprint (Frontend), os grupos terão que desenvolver as páginas HTML para mostrar aos professores.
+
+A segunda sprint (Banco de Dados), os grupos terão que desenvolver todo o banco de dados utilizado no projeto, sendo assim, terá que ter as tabelas, as colunas de cada tabela que se relacionam, enfim, efetuar uma modelagem de dados para mostrar aos professores.
+
+A terceira sprint (Backend), os grupos terão que passar o Frontend para dentro do projeto Laravel, e aplicar o backend para que as coisas funcionem corretamente. (Lembrando que é uma obrigatoriedade que os projetos estejam em Laravel na data da entrega do projeto).
+
+Como funcionam as Sprints ?
+No caso do frontend, quando o módulo de HTML e CSS finaliza, é dado início a sprint de Frontend.
+No caso do banco de dados, quando o módulo de banco de dados finalizar, comecaremos a sprint de banco de dados.
+No caso do backend, funciona um pouco diferente, afinal, o tempo já está apertado devido estar no fim do curso e vocês terão que trabalhar adicionando os conhecimento adquiridos em Laravel no projeto, já durante o módulo.
+
+As Sprints tem data limite para entrega. Ou seja, sempre que chegar a data limite os grupos deverão enviar o entregável para os professores analisarem e avaliarem, e como docentes, terão que dar um feedback para cada grupo.
+
+Texto
+
+Resumindo vocês terão que desenvolver um projeto do 0, onde terão que ir desde o frontend até o backend. Iremos implementar metodologias ágeis, visando vocês quebrarem um problema macro (que é o projeto integrador como um todo) em micro problemas, e, com base nisso serão feitas entregas.
+
+Sempre que finalizarmos um módulo vocês terão um "entregável" relacionado ao módulo finalizado. Exemplo, estamos em PHP e aí quando avançarmos para o módulo de MySQL, vocês terão a primeira tarefa do projeto integrador que será o início do layout e criação do frontend do projeto integrador. Onde será desenvolvido com o conhecimento adquirido no módulo de HTML e CSS e PHP
+
+Terão prazos para entregarem estas tarefas. E mais do que nunca, terão que saber trabalhar em grupo, dar palpites, ouvir palpites e supostas sugestões. Compartilhar conhecimento e absorver conhecimento dos colegas de equipe e sala de aula. Costuma ser uma experiência bem enriquecedora se levada a sério da devida forma como deve ser
+
+Viso sempre ser amigo de todos vocês e ajudar a todos, mas, sou realista e não gosto de iludir ou ludibriar nenhum aluno, assim como o Marcelo também não. 
+Nem sei como venderam o curso para vocês, mas será puxado. E terão que ter essa resiliência de saber separar o tempo de trabalho, família, lazer, estudo, com o tempo tirado para alavancar e evoluir o projeto integrador. O curso que vocês ingressaram não é fácil, e se não estiverem 100% focados e estudando pelo menos umas 6 horas semanais fora de sala de aula e buscando engajamento melhor, vai chegar um momento que ficarão perdidos. É muito conteúdo em pouco tempo, e existem módulos complexos.
+estaremos sempre juntos com a turma para direcionar e instruir aos melhores caminhos
