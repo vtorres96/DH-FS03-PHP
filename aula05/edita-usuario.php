@@ -1,7 +1,7 @@
 <?php
 
     // obtendo usuario referente ao ID passado na URL para trazer informacoes preenchidas no formulario
-    if(isset($_GET) && $_GET["id"] && $_GET){
+    if(isset($_GET) && $_GET){
 
         // 1 - obtendo ID que recebemos como parametro na URL
         $id = $_GET["id"];
