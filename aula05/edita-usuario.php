@@ -17,6 +17,7 @@
 
         // 5 - percorrendo o array associativo da lista de usuarios
         foreach ($arrayUsuarios["usuarios"] as $usuario) {
+            // verificando se encontramos o usuario
             if($usuario["id"] == $id){
                 array_push($usuarioEncontrado, $usuario);
             }
@@ -24,7 +25,42 @@
     }
 
     // alterando informacoes do usuarios no arquivo usuarios.json
+    if(isset($_POST) && $_POST){
 
+        // 1 - recebendo as informacoes que o usuario preencheu no formulario 
+        $id = $_POST["id"];
+        $nome = $_POST["nome"];
+        $sobrenome = $_POST["sobrenome"];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+
+        // 2 - obtendo o conteudo do arquivo usuarios.json
+        $usuariosJson = file_get_contents("./data/usuarios.json");
+
+        // 3 - transformando o conteudo do arquivo usuarios.json em um array associativo
+        $arrayUsuarios = json_decode($usuariosJson, true);
+
+        // 4 - percorrendo o array que contem a lista de usuarios
+        foreach ($arrayUsuarios["usuarios"] as $chave => $usuario) {
+            // 5 - verificando se encontramos o usuario
+            if($usuario["id"] == $id){
+                // alterando nome, sobrenome, email e senha do usuario especifico
+                $arrayUsuarios["usuarios"][$chave]["nome"] = $nome;
+                $arrayUsuarios["usuarios"][$chave]["sobrenome"] = $sobrenome;
+                $arrayUsuarios["usuarios"][$chave]["email"] = $email;
+
+                if($senha != ""){
+                    $arrayUsuarios["usuarios"][$chave]["senha"] = $senha;
+                }
+            }
+        }
+
+        // 6 - transformar o conteudo do arquivo usuarios.json que foi alterado em uma string json
+        $jsonUsuarios = json_encode($arrayUsuarios);
+
+        // 7 - sobrescrever o conteudo do arquivo usuarios.json
+        $alterou = file_put_contents("./data/usuarios.json", $jsonUsuarios);
+    }
 ?>
 
 <?php $tituloPagina = "Formulário de Alteração de Cadastro"; ?>

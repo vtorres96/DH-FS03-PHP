@@ -1,7 +1,7 @@
 <?php
 
     if(isset($_POST) && $_POST){
-        // 1 - receber as informacoes que o usuario preencheu no formulario 
+        // 1 - recebendo as informacoes que o usuario preencheu no formulario 
         $nome = $_POST["nome"];
         $sobrenome = $_POST["sobrenome"];
         $email = $_POST["email"];
