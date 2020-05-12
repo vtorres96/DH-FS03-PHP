@@ -1,0 +1,18 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Testando",
+            "sobrenome": "testando 123",
+            "email": "testando@gmail.com",
+            "senha": "$2y$10$gj21BbeclnDrz4eFAIcFM.TEhp5xmgrGM\/dyF\/zQJQtyJc2m34Mq."
+        },
+        {
+            "id": 2,
+            "nome": "Marcelo",
+            "sobrenome": "Diament",
+            "email": "mdiament@digitalhouse.com",
+            "senha": "$2y$10$iLNA7vCOmR3gifZBOji1z.7k9g2u2FNsl\/ROQbWJoxzT6YGFQ.5Uy"
+        }
+    ]
+}
