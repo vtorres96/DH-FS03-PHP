@@ -1,44 +1,57 @@
 <?php
 
+    // importando arquivo que efetua a instancia da conexao com banco de dados
+    require_once("./config/conexao.php");
+
     if(isset($_POST) && $_POST){
         // 1 - recebendo as informacoes que o usuario preencheu no formulario
         $email = $_POST["email"];
         $senha = $_POST["senha"];
 
-        // 2 - criando variavel logado para verificar se o usuario obteve erro 
-        // ao digitar a senha ou ate mesmo se ele existe na nossa "base de dados" ficticia que e o arquivo usuarios.json
-        $logado = false;
+        // 2 - criando query para buscar usuario de acordo com o email que ele nos enviou
+        // ao preencher o formulario de login
+        $query = $dbh->prepare('select * from usuarios where email = :email');
 
-        // 3 - obtendo o conteudo do arquivo usuarios.json
-        $usuariosJson = file_get_contents("./data/usuarios.json");
+        // 3 - executando a query para efetivamente buscar o registro na tabela de usuarios
+        // de acordo com o email informado
+        $query->execute([
+            ":email" => $email
+        ]);
 
-        // 4 - transformando o conteudo do arquivo usuarios.json em um array associativo
-        $arrayUsuarios = json_decode($usuariosJson, true);
+        // 4 - armazenando o retorno obtido do banco de dados em uma variavel
+        $usuario = $query->fetch(PDO::FETCH_ASSOC);
 
-        // 5 - percorrendo o array associativo que contem a lista de usuarios
-        foreach ($arrayUsuarios["usuarios"] as $usuario) {
-            // 6 - verificando se o email informado existe no arquivo usuarios.json
-            if($usuario["email"] == $email){
-                // 7 - se o usuario for encontrado iremos verificar se a senha informada confere com a senha que temos armazenada no arquivo usuarios.json
-                if(password_verify($senha, $usuario["senha"])){
-
-                    $logado = true;
-
-                    // 8 - iniciando sessao caso usuario tenha informado email e senha corretos
-                    session_start();
-
-                    // 9 - criando variaveis de sessao para verificar se usuario esta logado, e, obter o id e o nome do usuario
-                    $_SESSION["logado"] = $logado;
-                    $_SESSION["id"] = $usuario["id"];
-                    $_SESSION["nome"] = $usuario["nome"];
-
-                    // 10 - redirecionando usuario para lista de usuarios
-                    header("Location: usuarios.php");
-                }
+        // 5 - verificando se nao foi retornado nenhum registro encontrado
+        if(!$usuario){
+            // 6 - criando variavel logado para verificar se o usuario obteve erro 
+            // ao digitar a senha ou ate mesmo se ele existe na nossa base de dados
+            $logado = false;
+        } else {
+            // 7 - se o usuario for encontrado iremos verificar se a senha informada confere
+            // com a senha que temos armazenada no banco de dados
+            if(password_verify($senha, $usuario["senha"])){
+                // 8 - transformando valor da variavel logado em true pois quer dizer que o usuario
+                // conseguiu efetuar login com sucesso
+                $logado = true;
+    
+                // 9 - iniciando sessao caso usuario tenha informado email e senha corretos
+                session_start();
+    
+                // 10 - criando variaveis de sessao para verificar se usuario esta logado, e, obter
+                // o id e o nome do usuario
+                $_SESSION["logado"] = $logado;
+                $_SESSION["id"] = $usuario["id"];
+                $_SESSION["nome"] = $usuario["nome"];
+    
+                // 11 - redirecionando usuario para lista de usuarios
+                header("Location: usuarios.php");
+            } else {
+                // 12 - se o usuario for encontrado mas a senha informada nao conferir com a senha salva no banco de dados
+                // isso indica que ele errou a senha
+                $logado = false;
             }
         }
     }
-
 ?>
 <?php $tituloPagina = "Formulário de Login"; ?>
 <?php require_once("./inc/head.php"); ?>

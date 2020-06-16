@@ -1,5 +1,8 @@
 <?php
 
+    // importando arquivo que efetua a instancia da conexao com banco de dados
+    require_once("./config/conexao.php");
+
     // Bloqueando pagina para usuarios nao logados
     // 1 - obtendo sessao iniciada
     session_start();
@@ -9,41 +12,25 @@
         header("Location: login.php");
     }
 
-    // Listando usuarios
-    // 1 - obtendo o conteudo do arquivo usuarios.json
-    $usuariosJson = file_get_contents("./data/usuarios.json");
-
-    // 2 - transformando o conteudo do arquivo usuarios.json em um array associativo
-    $arrayUsuarios = json_decode($usuariosJson, true);
-
     // Excluindo usuarios
-    // obtendo usuario referente ao ID passado na URL para trazer informacoes preenchidas no formulario
     if(isset($_GET) && $_GET){
+        // 1 - criando query para excluir o registro da tabela usuarios de acordo com o ID obtido na URL
+        $query = $dbh->prepare('delete from usuarios where id = :id');
 
-        // 1 - obtendo ID que recebemos como parametro na URL
-        $id = $_GET["id"];
-
-        // 2 - obtendo o conteudo do arquivo usuarios.json
-        $usuariosJson = file_get_contents("./data/usuarios.json");
-
-        // 3 - transformando o conteudo do arquivo usuarios.json em um array associativo
-        $arrayUsuarios = json_decode($usuariosJson, true);
-
-        // 4- percorrendo array que contem a lista de usuarios
-        foreach ($arrayUsuarios["usuarios"] as $chave => $usuario) {
-            // verificando se encontramos o usuario para fazer a exclusao
-            if($usuario["id"] == $id){
-                // removendo usuario encontrado da lista de usuarios
-                unset($arrayUsuarios["usuarios"][$chave]);
-            }
-        }
-        
-        // 6 - transformando o conteudo do arquivo usuarios.json que foi alterado em uma string json
-        $jsonUsuarios = json_encode($arrayUsuarios);
-
-        // 7 - sobrescrevendo o conteudo do arquivo usuarios.json
-        $excluiu = file_put_contents("./data/usuarios.json", $jsonUsuarios);
+        $excluiu = $query->execute([
+            ":id" => $_GET["id"]
+        ]);
     }
+
+    // Listando usuarios
+    // 1 - criando query para listar todos os registros da tabela usuarios
+    $query = $dbh->prepare('select * from usuarios');
+
+    // 2 - executando a query para efetivamente obter todos os registros da tabela usuarios
+    $query->execute();
+
+    // 3 - armazenando o retorno obtido do banco de dados em uma variavel
+    $arrayUsuarios = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php $tituloPagina = "Lista de Usuários"; ?>
 <?php require_once("./inc/head.php"); ?>
@@ -63,7 +50,7 @@
                     </thead>
                     <tbody>
                         <!-- 3 - percorrendo o array associativo da lista de usuarios -->
-                        <?php foreach ($arrayUsuarios["usuarios"] as $usuario): ?>
+                        <?php foreach ($arrayUsuarios as $usuario): ?>
                             <tr>
                                 <th scope="row"><?= $usuario["nome"] ?></th>
                                 <td><?= $usuario["sobrenome"] ?></td>

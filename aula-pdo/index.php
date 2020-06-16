@@ -1,5 +1,8 @@
 <?php
 
+    // importando arquivo que efetua a instancia da conexao com banco de dados
+    require_once("./config/conexao.php");
+
     if(isset($_POST) && $_POST){
         // 1 - recebendo as informacoes que o usuario preencheu no formulario 
         $nome = $_POST["nome"];
@@ -7,33 +10,16 @@
         $email = $_POST["email"];
         $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
-        // 2 - obtendo o conteudo do arquivo usuarios.json
-        $usuariosJson = file_get_contents("./data/usuarios.json");
-
-        // 3 - transformando o conteudo do arquivo usuarios.json em um array associativo
-        $arrayUsuarios = json_decode($usuariosJson, true);
-
-        // 4 - obtendo usuario que esta na ultima posicao do array
-        $ultimoUsuario = end($arrayUsuarios["usuarios"]);
-
-        // 5 - criando array para o novo usuario e dentro dele ter as propriedades nome, sobrenome, email e senha com os valores do que o usuario preencheu no formulario
-        $novoUsuario = [
-            // gerando id sequencial simulando um banco de dados, somando o id do ultimo usuario sempre com + 1
-            "id" => $ultimoUsuario["id"] + 1,
-            "nome" => $nome,
-            "sobrenome" => $sobrenome,
-            "email" => $email,
-            "senha" => $senha
-        ];
-
-        // 6 - adicionando o novo usuario no array da lista de usuarios obtidos do arquivo usuarios.json
-        array_push($arrayUsuarios["usuarios"], $novoUsuario);
-
-        // 7 - transformando o array associativo de usuarios apos ter recebido o novo usuario em uma string json
-        $jsonUsuarios = json_encode($arrayUsuarios);
-
-        // 8 - sobrescrevendo o conteudo do arquivo usuarios.json
-        $cadastrou = file_put_contents("./data/usuarios.json", $jsonUsuarios);
+        // 2 - criando query para adicionar novo registro na tabela de usuarios
+        $query = $dbh->prepare('insert into usuarios (nome, sobrenome, email, senha) values (:nome, :sobrenome, :email, :senha);');
+    
+        // 3 - executando a query para efetivamente cadastrar um novo registro na tabela de usuarios
+        $cadastrou = $query->execute([
+            ":nome" => $nome,
+            ":sobrenome" => $sobrenome,
+            ":email" => $email,
+            ":senha" => $senha
+        ]);
     }
 
 ?>
