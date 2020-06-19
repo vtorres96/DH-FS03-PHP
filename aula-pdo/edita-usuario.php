@@ -34,9 +34,7 @@
         // 2 - verificando se foi informada uma nova senha para substituir a antiga no banco de dados
         // caso nao tenha informado senha nenhuma iremos atribuir a senha que estava salva da ultima
         // e ja esta criptografada, portanto, nao precisaremos criptografar de novo
-        if($senha == ""){
-            $senha = $usuarioEncontrado["senha"]
-        } else {
+        if($senha != ""){
             $senha = password_hash($senha, PASSWORD_DEFAULT);
         }
 
