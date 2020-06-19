@@ -3,6 +3,15 @@
     // importando arquivo que efetua a instancia da conexao com banco de dados
     require_once("./config/conexao.php");
 
+    // Bloqueando pagina para usuarios nao logados
+    // 1 - obtendo sessao iniciada
+    session_start();
+
+    // 2 - aplicando validacao para redirecionar usuario caso nao esteja logado, bloqueando o acesso a essa pagina
+    if(!isset($_SESSION["logado"])){
+        header("Location: login.php");
+    }
+
     // obtendo usuario referente ao ID passado na URL para trazer informacoes preenchidas no formulario
     if(isset($_GET) && $_GET){
 
