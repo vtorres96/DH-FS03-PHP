@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -88,30 +88,6 @@
                     <div class="links">
                         @foreach ($cards as $card)
                             <a href="">{{ $card }}</a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="content col-md-12">
-                    <div class="title m-b-md">
-                        Card Prices
-                    </div>
-
-                    <div class="links">
-                        @foreach ($cardPrices as $cardPrice)
-                            <a href="">{{ $cardPrice }}</a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="content col-md-12">
-                    <div class="title m-b-md">
-                        Card Title
-                    </div>
-
-                    <div class="links">
-                        @foreach ($cardTitles as $cardTitle)
-                            <a href="">{{ $cardTitle }}</a>
                         @endforeach
                     </div>
                 </div>
