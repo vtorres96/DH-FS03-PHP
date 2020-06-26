@@ -21,3 +21,6 @@ Route::post('/', 'CardsController@create');
 
 // alterando card
 Route::put('/{id}', 'CardsController@edit');
+
+// alterando card
+Route::delete('/{id}', 'CardsController@delete');
