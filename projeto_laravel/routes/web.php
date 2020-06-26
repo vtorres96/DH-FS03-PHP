@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // listando cards
-Route::get('/', 'CardsController@index');
+Route::get('/cards', 'CardsController@index');
 
 // criando card
-Route::post('/', 'CardsController@create');
+Route::post('/cards', 'CardsController@create');
 
 // alterando card
-Route::put('/{id}', 'CardsController@edit');
+Route::put('/cards/{id}', 'CardsController@edit');
 
 // alterando card
-Route::delete('/{id}', 'CardsController@delete');
+Route::delete('/cards/{id}', 'CardsController@delete');
