@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/cards', 'CardsController@index');
 
 // criando card
-Route::post('/cards', 'CardsController@create');
+Route::get('/cards/add', 'CardsController@add');
+Route::post('/cards/add', 'CardsController@create');
 
 // alterando card
 Route::put('/cards/{id}', 'CardsController@edit');

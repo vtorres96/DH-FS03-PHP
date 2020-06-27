@@ -31,7 +31,7 @@
                             <td scope="row">{{$card->title}}</td>
                             <td scope="row">{{$card->content}}</td>
                             <td>
-                                <a href="/cartoes/modificar/{{$card->id}}">
+                                <a href="/cards/update/{{$card->id}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
@@ -53,7 +53,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                <form action="/cartoes/remover/{{ $card->id }}" method="POST">
+                                                <form action="/cards/remove/{{ $card->id }}" method="POST">
                                                     @csrf
                                                     {{ method_field('DELETE') }}
                                                     <button type="submit" class="btn btn-danger">Excluir</a>

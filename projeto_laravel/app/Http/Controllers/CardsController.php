@@ -18,7 +18,16 @@ class CardsController extends Controller
         }
     }
 
+    public function add() {
+        return view('cards.create');
+    }
+
     public function create(Request $request) {
+
+        $request->validate([
+            'title' => 'required|min:5',
+            'content' => 'required|min:20'
+        ]);
 
         // instanciando objeto card
         $card = new Card;
@@ -34,7 +43,7 @@ class CardsController extends Controller
         // verificando se obteve registros para listar
         if($card){
             // retornando resposta JSON com card criado
-            return response()->json($card, 201);
+            return view('cards.create')->with('success', 'Cartão inserido com sucesso');
         }
     }
 
