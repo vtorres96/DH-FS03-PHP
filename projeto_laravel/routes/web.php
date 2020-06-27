@@ -24,3 +24,7 @@ Route::put('/cards/{id}', 'CardsController@edit');
 
 // alterando card
 Route::delete('/cards/{id}', 'CardsController@delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

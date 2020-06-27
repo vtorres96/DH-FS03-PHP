@@ -14,7 +14,7 @@ class CardsController extends Controller
         // verificando se obteve registros para listar
         if($cards){
             // retornando resposta JSON com todos cards encontrados
-            return response()->json($cards, 200);
+            return view('cards.index')->with('cards', $cards);
         }
     }
 
