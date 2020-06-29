@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// home
+Route::get('/', function(){
+    return view('welcome');
+});
+
 // listando cards
 Route::get('/cards', 'CardsController@index');
 

@@ -50,6 +50,9 @@
             @yield('content')
         </main>
 
+        <footer class="w-100 bg-primary">
+            Testando footer
+        </footer>
     </div>
 
 </body>
