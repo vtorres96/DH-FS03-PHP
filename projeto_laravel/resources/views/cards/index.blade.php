@@ -22,7 +22,9 @@
                         <tr>
                             <th scope="col">Título</th>
                             <th scope="col">Conteudo</th>
-                            <th scope="col" colspan="2">Ações</th>
+                            @auth
+                                <th scope="col" colspan="2">Ações</th>
+                            @endauth
                         </tr>
                     </thead>
                     <tbody>
@@ -30,39 +32,41 @@
                         <tr>
                             <td scope="row">{{$card->title}}</td>
                             <td scope="row">{{$card->content}}</td>
-                            <td>
-                                <a href="/cards/update/{{$card->id}}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#modal{{ $card->id }}">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <div class="modal fade" id="modal{{ $card->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Deseja excluir o cartão {{ $card->title }} ?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Cartão: {{ $card->title }}</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                <form action="/cards/remove/{{ $card->id }}" method="POST">
-                                                    @csrf
-                                                    {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger">Excluir</a>
-                                                </form>
+                            @auth
+                                <td>
+                                    <a href="/cards/update/{{$card->id}}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#modal{{ $card->id }}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    <div class="modal fade" id="modal{{ $card->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Deseja excluir o cartão {{ $card->title }} ?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Cartão: {{ $card->title }}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <form action="/cards/remove/{{ $card->id }}" method="POST">
+                                                        @csrf
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-danger">Excluir</a>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
+                            @endauth
                         </tr>
                         @endforeach
                     </tbody>

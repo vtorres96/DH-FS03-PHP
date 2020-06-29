@@ -40,6 +40,42 @@
                             <li class="nav-item">
                                 <a href="/cards" class="nav-link pr-2">Cátalogo de Cartões</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/register" class="nav-link pr-2">Cadastre-se</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="/login" class="nav-link pr-2">Login</a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link pr-2">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/cards" class="nav-link pr-2">Cátalogo de Cartões</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Olá, {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu border-0 dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
+                                    <a class="pl-0 dropdown-item b-none text-white" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                        {{ __('Sair') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         </ul>
                     @endguest
                 </div>
@@ -50,9 +86,6 @@
             @yield('content')
         </main>
 
-        <footer class="w-100 bg-primary">
-            Testando footer
-        </footer>
     </div>
 
 </body>
