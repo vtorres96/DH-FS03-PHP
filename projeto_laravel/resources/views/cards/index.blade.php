@@ -15,6 +15,15 @@
                 <p class="col-12 d-block text-center"><b>listando todos os cartões da nossa plataforma</b></p>
             </header>
         </section>
+        @if(isset($success) && $success != "")
+            <section class="row">
+                <div class="col-12">
+                    <div class="alert alert-success text-center col-12">
+                        {{ $success }}
+                    </div>
+                </div>
+            </section>
+        @endif
         <section class="row">
             <article class="col-12">
                 <table class="table">
@@ -71,6 +80,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $cards->links() }}
+                </div>
             </article>
         </section>
     @endif

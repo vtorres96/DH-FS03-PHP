@@ -26,10 +26,11 @@ Route::get('/cards/add', 'CardsController@add');
 Route::post('/cards/add', 'CardsController@create');
 
 // alterando card
-Route::put('/cards/{id}', 'CardsController@edit');
+Route::get('/cards/update/{id}', 'CardsController@edit');
+Route::put('/cards/update/{id}', 'CardsController@update');
 
-// alterando card
-Route::delete('/cards/{id}', 'CardsController@delete');
+// excluindo card
+Route::delete('/cards/remove/{id}', 'CardsController@delete');
 
 Auth::routes();
 
