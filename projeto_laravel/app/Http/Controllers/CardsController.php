@@ -40,12 +40,36 @@ class CardsController extends Controller
             'content' => 'required|min:20'
         ]);
 
+        // obtendo objeto imagem
+        $image = $request->file('image');
+
+        // verificando se usuario nao enviou imagem
+        if(empty($image)){
+            $pathRelative = null;
+        } else {
+            //
+            $image->storePublicly('uploads');
+
+            // criando caminho ate a pasta uploads
+            $absolutePath = public_path()."/storage/uploads";
+
+            // obtendo o nome do arquivo
+            $name = $image->getClientOriginalName();
+
+            // mover a imagem para o projeto
+            $image->move($absolutePath, $name);
+
+            // // obtendo caminho relativo para passar ao banco de dados
+            $pathRelative = "storage/uploads/$name";
+        }
+
         // instanciando objeto card
         $card = new Card;
 
         // atribuindo valores recebidos no corpo da requisicao
         // as respectivas colunas
         $card->title = $request->title;
+        $card->image = $pathRelative;
         $card->content = $request->content;
 
         // efetuando o insert do registro na base de dados
@@ -117,5 +141,19 @@ class CardsController extends Controller
                 'success' => 'Registro excluído com sucesso'
             ]);
         }
+    }
+
+    public function search(Request $request){
+
+        $search = $request->input('search');
+
+        $cards = Card::where('title', 'like', '%' . $search . '%')
+            ->orWhere('content', 'like', '%' . $search . '%')
+            ->paginate(10);
+
+        return view('cards.index')->with([
+            'search' => $search,
+            'cards' => $cards
+        ]);
     }
 }

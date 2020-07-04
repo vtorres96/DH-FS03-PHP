@@ -13,6 +13,12 @@
         </div>
 
         <div class="form-group col-md-6 col-sm-12">
+            <label for="image">Imagem</label>
+            <input type="file" name="image" value="{{ old('image') }}" class="form-control{{$errors->has('image') ? ' is-invalid':''}}" id="image">
+            <div class="invalid-feedback">{{ $errors->first('image') }}</div>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-12">
             <label for="content">Conteúdo</label>
             <input type="text" name="content"  value="{{ old('content') }}" class="form-control{{$errors->has('content') ? ' is-invalid':''}}" id="content">
             <div class="invalid-feedback">{{ $errors->first('content') }}</div>
