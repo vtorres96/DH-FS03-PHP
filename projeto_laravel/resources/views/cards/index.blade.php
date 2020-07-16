@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                @if(isset($success) && $success != "")
+                @if(!empty(Request::get('success')))
                   <section class="row">
                       <div class="col-12">
                           <div class="message alert alert-success text-center">
-                              {{ $success }}
+                              Registro excluído com sucesso
                           </div>
                       </div>
                   </section>

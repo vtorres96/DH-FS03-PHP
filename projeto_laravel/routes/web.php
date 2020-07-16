@@ -19,7 +19,7 @@ Route::get('/', function(){
 });
 
 // listando cards
-Route::get('/cards', 'CardsController@index');
+Route::get('/cards', 'CardsController@index')->name('cards');
 
 // criando card
 Route::get('/cards/add', 'CardsController@add');

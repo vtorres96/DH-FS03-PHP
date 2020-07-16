@@ -133,12 +133,8 @@ class CardsController extends Controller
             // ao renderizar a view index, afinal, de contas ela percorre um array $cards para montar a
             // listagem de cards dentro de uma table
 
-            // obtendo todos registros da tabela cards
-            $cards = Card::all();
-
-            return view('cards.index')->with([
-                'cards' => $cards,
-                'success' => 'Registro excluído com sucesso'
+            return redirect()->route('cards', [
+                'success' => 'true'
             ]);
         }
     }
