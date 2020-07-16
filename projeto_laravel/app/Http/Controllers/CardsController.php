@@ -129,12 +129,10 @@ class CardsController extends Controller
         // mas ainda esta em nossa base de dados
         if($card->delete()){
             // apos excluir o registro precisamos retornar para a listagem de cartoes em index.blade.php
-            // porem teremos que obter todos os registros da tabela cards para que nao tenhamos erros
-            // ao renderizar a view index, afinal, de contas ela percorre um array $cards para montar a
-            // listagem de cards dentro de uma table
-
+            // portanto iremos utilizar o nome que atribuimos a nossa rota e consequentemente a view
+            // para retornar com sucesso e contendo o parametro success na URL
             return redirect()->route('cards', [
-                'success' => 'true'
+                'success' => true
             ]);
         }
     }
